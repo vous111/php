@@ -1,17 +1,6 @@
 <?php
 use Qiniu\Storage\UploadManager;
 
-// // 1.搜索public/static/icon/*.png 得到每一个文件名的路径，用数组将其保存
-// // print_r(get_filename_list("c:/Users/zy/Desktop/php/jr_website/public/static/icon")); //电脑的文件路径即可
-// $icon_all_dirs = get_filename_list("c:/Users/zy/Desktop/php/jr_website/public/static/icon");
-
-// // 2.遍历图片名数组，搜索文件名有没有在view1/web/的文件中使用，有的话用数组保存被使用的文件地址，没有则开始下一个图片
-// $view_dirs = get_filename_list("c:/Users/zy/Desktop/php/jr_website/view3/web");
-
-// $icon_dirs=get_replace_path_name($icon_all_dirs,'../','icon');
-// replace_multiple_file($icon_dirs, $view_dirs);
-// // print_r($icon_dirs);
-
 /**
  * 替换多个文件
  *
@@ -84,7 +73,12 @@ function get_replace_path_name($all_path,$static_name,$floder_name)
     return $deal_path;
 }
 
-
+/**
+ * 获取文件下面的所有文件名
+ *
+ * @param [type] $dir
+ * @return Array
+ */
 function get_filename_list($dir)
 {
     $files = array();
@@ -142,7 +136,9 @@ function get_upload_image_url($filePath,$token,$domain,$staticName,$prefixName)
     return $domain.'/'.$ret['key'];
 }
 
-
+/**
+ * 获取毫秒时间戳
+ */
 function getUnixTimestamp ()
 {
 
